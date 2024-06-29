@@ -1,0 +1,48 @@
+services:
+  db:
+    # We use a mariadb image which supports both amd64 & arm64 architecture
+    #image: mariadb:10.6.4-focal
+    # If you really want to use MySQL, uncomment the following line
+    image: mysql:8.0.27
+    command: '--default-authentication-plugin=mysql_native_password'
+    volumes:
+      - rock_blog_db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+  wordpress:
+    build:
+      context: .
+      args:
+        WITH_XDEBUG: true
+        USER_NAME: "${USER}"
+        USER_ID: "1000" # ~$ id -u
+        GROUP_ID: "1000" # ~$ id -g
+    volumes:
+      - ./php-config.ini:/usr/local/etc/php/conf.d/php-config.ini
+      - ./wp-core:/var/www/html
+      - ./rockblogtheme:/var/www/html/wp-content/themes/rockblogtheme
+      # - ./my-plugin:/var/www/html/wp-content/plugins/my-plugin
+    ports:
+      - 80:80
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DEBUG: 1
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_DEBUG_LOG', true);
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8081:80
+
+volumes:
+  rock_blog_db_data:

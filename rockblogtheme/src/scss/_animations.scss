@@ -1,0 +1,23 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: none;
+  }
+  100% {
+    opacity: 1;
+  }
+}

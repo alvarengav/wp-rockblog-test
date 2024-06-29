@@ -1,0 +1,14 @@
+// I installed Bootstrap but decided to create the CSS myself to better showcase my knowledge in CSS.
+// However, it is possible to use Bootstrap, integrating only some utilities to avoid loading unnecessary CSS.
+
+@use "normalize";
+@use "fonts";
+@use "animations";
+@use "header";
+@use "main";
+@use "box-promo";
+@use "features";
+@use "latest_articles";
+@use "about";
+@use "newsletter";
+@use "footer";

@@ -1,0 +1,1 @@
+(()=>{"use strict";jQuery(document).ready((function(e){const n=e("#menu-toggle"),c=e("#header__menu"),o=e("#search-toggle"),t=e("#search-form");n.on("click",(function(){c.toggleClass("header__menu--open")})),o.on("click",(function(){t.toggleClass("active")}))}))})();

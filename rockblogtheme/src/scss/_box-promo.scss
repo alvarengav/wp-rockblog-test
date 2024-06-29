@@ -1,0 +1,157 @@
+@use "variables" as *;
+@use "mixins" as *;
+@use "functions" as *;
+
+.box-promo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 2rem;
+  background-color: $white;
+  margin-top: 2rem;
+
+  &__content {
+    flex: 1;
+  }
+
+  &__tag {
+    background-color: $pink;
+    color: $white;
+    padding: $spacing-xs $spacing-sm;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+
+  &__title {
+    font-family: $font-family-heading;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: $black;
+    line-height: 1.5;
+    margin: 0 0 $spacing-sm 0;
+  }
+
+  &__description {
+    font-family: $font-family-base;
+    font-size: $font-size-md;
+    color: $gray-dark;
+    margin: px-to-rem(20) 0;
+  }
+
+  &__image-wrapper {
+    position: relative;
+    flex: 1;
+    margin-top: $spacing-md;
+  }
+
+  &__image-backdrop {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    background-color: $green;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+  }
+
+  &__image {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    opacity: 0;
+    animation: fadeInDown 1s ease-out forwards;
+  }
+
+  @include breakpoint-md {
+    flex-direction: row;
+
+    &__content {
+      margin-right: $spacing-lg;
+    }
+
+    &__image-wrapper {
+      margin-top: 0;
+    }
+  }
+
+  @include breakpoint-lg {
+    margin: {
+      left: auto;
+      right: auto;
+    }
+
+    &__title {
+      font-size: px-to-rem(48);
+    }
+
+    &__content {
+      margin-right: 0;
+      flex-grow: 0;
+      flex-basis: 46%;
+    }
+
+    &__tag {
+      margin-bottom: px-to-rem(30);
+    }
+
+    &__description {
+      font-size: px-to-rem(22);
+    }
+
+    &__image-backdrop {
+      max-width: px-to-rem(460);
+      height: px-to-rem(300);
+      top: 0;
+      left: 0;
+    }
+
+    &__image {
+      max-width: px-to-rem(480);
+      transform: translate(px-to-rem(40), px-to-rem(40));
+    }
+  }
+
+  @include breakpoint-xl {
+    &__content {
+      flex: 1;
+      flex-basis: 0;
+    }
+
+    &__image {
+      max-width: px-to-rem(540);
+    }
+  }
+
+  @include breakpoint-xxl {
+    max-width: px-to-rem(1370);
+
+    &__title {
+      font-size: px-to-rem(60);
+      line-height: px-to-rem(88);
+    }
+
+    &__content {
+      max-width: px-to-rem(558);
+      flex: 1;
+    }
+
+    &__image-backdrop {
+      max-width: px-to-rem(662);
+      height: px-to-rem(433);
+      top: 0;
+      left: 0;
+    }
+
+    &__image {
+      max-width: px-to-rem(731);
+      transform: translate(px-to-rem(80), px-to-rem(43));
+    }
+  }
+
+  @media (min-width: 1445px) {
+    padding: 0;
+  }
+}

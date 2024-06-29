@@ -1,0 +1,156 @@
+@use "variables" as *;
+@use "functions" as *;
+@use "mixins" as *;
+
+.footer {
+  background-color: $white;
+  color: $black;
+  padding: px-to-rem(32);
+  border-top: 1px solid #161b3d;
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: px-to-rem(32);
+  }
+
+  &__column {
+    flex: 1;
+    text-align: center;
+
+    &--logo {
+      flex: 2;
+    }
+  }
+
+  &__logo {
+    font-family: $font-family-heading;
+    font-size: px-to-rem(24);
+    font-weight: 700;
+  }
+
+  &__description {
+    font-family: $font-family-base;
+    font-size: px-to-rem(14);
+    margin: px-to-rem(16) 0;
+    max-width: px-to-rem(480);
+    text-align: center;
+  }
+
+  &__social {
+    display: flex;
+    justify-content: center;
+    gap: px-to-rem(16);
+    margin-top: px-to-rem(16);
+
+    &-icon {
+      width: px-to-rem(24);
+      height: px-to-rem(24);
+    }
+  }
+
+  &__heading {
+    font-family: $font-family-base;
+    font-size: px-to-rem(18);
+    font-weight: 700;
+    margin-bottom: px-to-rem(16);
+    color: $silver;
+    margin: 0 {
+      bottom: px-to-rem(15);
+    }
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    margin-bottom: px-to-rem(8);
+    font-weight: 600;
+
+    a {
+      color: $black;
+      text-decoration: none;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $blue;
+      }
+    }
+  }
+
+  &__bottom {
+    text-align: center;
+    margin: 0 {
+      top: px-to-rem(60);
+    }
+  }
+
+  &__copyright {
+    font-family: $font-family-base;
+    font-size: px-to-rem(14);
+    margin: 0;
+  }
+
+  @include breakpoint-md {
+    padding: {
+      top: px-to-rem(30);
+      bottom: px-to-rem(30);
+      left: px-to-rem(32);
+      right: px-to-rem(32);
+    }
+
+    margin: {
+      top: px-to-rem(38);
+    }
+
+    &__top {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    &__logo {
+      width: px-to-rem(77);
+    }
+
+    &__column {
+      text-align: left;
+    }
+
+    &__social {
+      justify-content: flex-start;
+      gap: px-to-rem(40);
+    }
+
+    &__description {
+    }
+
+    &__bottom {
+      text-align: left;
+    }
+  }
+
+  @include breakpoint-lg {
+    max-width: px-to-rem(1172);
+    @include x-center;
+
+    &__description {
+      margin: {
+        top: px-to-rem(24);
+        bottom: px-to-rem(24);
+      }
+    }
+  }
+
+  @include breakpoint-xl {
+    padding: {
+      left: 0;
+      right: 0;
+    }
+  }
+}

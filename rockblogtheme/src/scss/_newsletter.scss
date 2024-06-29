@@ -1,0 +1,96 @@
+@use "variables" as *;
+@use "functions" as *;
+@use "mixins" as *;
+
+.newsletter {
+  background-color: $blue;
+  color: $white;
+  padding: px-to-rem(32);
+  text-align: center;
+
+  &__content {
+    max-width: px-to-rem(800);
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-family: $font-family-heading;
+    font-size: px-to-rem(32);
+    font-weight: 700;
+    margin-bottom: px-to-rem(16);
+  }
+
+  &__description {
+    font-family: $font-family-base;
+    font-size: px-to-rem(16);
+    margin-bottom: px-to-rem(24);
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: px-to-rem(16);
+  }
+
+  &__input {
+    padding: px-to-rem(12);
+    font-size: px-to-rem(16);
+    border: 2px solid $blue;
+    background-color: #ffffff1c;
+    color: $white;
+    flex: 1;
+    max-width: 100%;
+    border-bottom: 1px solid $white;
+
+    &::placeholder {
+      color: white;
+    }
+  }
+
+  &__button {
+    padding: px-to-rem(12) px-to-rem(24);
+    font-size: px-to-rem(16);
+    background-color: $green;
+    color: $white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: darken($green, 10%);
+    }
+  }
+
+  @include breakpoint-md {
+    margin: {
+      top: px-to-rem(64);
+    }
+    padding: {
+      left: 0;
+      right: 0;
+    }
+
+    &__form {
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    &__input {
+      max-width: px-to-rem(300);
+    }
+  }
+
+  @include breakpoint-lg {
+    max-width: px-to-rem(1170);
+    @include x-center;
+
+    &__title {
+      font-size: px-to-rem(40);
+    }
+
+    &__description {
+      font-size: px-to-rem(22);
+    }
+  }
+}

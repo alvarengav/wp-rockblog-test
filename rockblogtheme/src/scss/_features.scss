@@ -1,0 +1,128 @@
+@use "variables" as *;
+@use "functions" as *;
+@use "mixins" as *;
+
+.features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2rem;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: px-to-rem(48);
+  }
+
+  &__icon-wrapper {
+    background-color: $pink;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: px-to-rem(16);
+    width: 80px;
+    height: 80px;
+  }
+
+  &__icon {
+    width: px-to-rem(48);
+    height: px-to-rem(48);
+  }
+
+  &__title {
+    font-family: $font-family-heading;
+    font-size: px-to-rem(24);
+    font-weight: 700;
+    color: $black;
+    margin-bottom: px-to-rem(8);
+  }
+
+  &__description {
+    font-family: $font-family-base;
+    font-size: px-to-rem(16);
+    color: $gray-dark;
+    margin: px-to-rem(24) 0;
+    line-height: px-to-rem(28);
+  }
+
+  &__button {
+    display: inline-block;
+    font-family: $font-family-base;
+    font-weight: 600;
+    padding: px-to-rem(8) px-to-rem(16);
+    background-color: $blue;
+    color: $white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin-bottom: px-to-rem(36);
+
+    &:hover {
+      background-color: darken($blue, 10%);
+    }
+  }
+
+  @include breakpoint-sm {
+    &__item {
+      margin-top: 64px;
+    }
+
+    &__description {
+      max-width: 75%;
+    }
+  }
+
+  @include breakpoint-md {
+    margin-top: px-to-rem(32);
+    flex-direction: row;
+    align-items: stretch;
+    &__item {
+      flex: 1;
+    }
+
+    &__icon-wrapper {
+      width: px-to-rem(90);
+      height: px-to-rem(90);
+    }
+
+    &__description {
+      flex-grow: 1;
+      max-width: none;
+    }
+  }
+
+  @include breakpoint-lg {
+    margin-top: px-to-rem(88);
+    padding: 0 px-to-rem(32);
+    max-width: px-to-rem(1170);
+    gap: 1rem;
+    @include x-center;
+
+    &__title {
+      font-size: px-to-rem(30);
+      font-weight: 600;
+      margin-top: px-to-rem(36);
+    }
+
+    &__description {
+      font-size: px-to-rem(18);
+      margin: {
+        top: px-to-re(28);
+        bottom: px-to-rem(28);
+      }
+    }
+
+    &__icon-wrapper {
+      width: px-to-rem(90);
+      height: px-to-rem(90);
+      margin-bottom: 0;
+    }
+
+    &__icon {
+      width: px-to-rem(60);
+      height: px-to-rem(60);
+    }
+  }
+}
